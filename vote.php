@@ -7,7 +7,10 @@
 
 
 // TODO: Set up PHP to get the images in the dir and load them into an array so that the next img_url can be inserted into the JSON object and sent back to the JS where it will replace the current image.
-  $dir_contents = scandir("./img/", 1);
+  $dir_contents = scandir("./gallery/", 1);
+  $dir_type  = gettype($dir_contents);
+  $current_index = array_search($voteObj['img_url'], $dir_contents);
+  $next_img = $dir_contents[$voteObj['img_url']] +1;
 
 
 
@@ -49,7 +52,7 @@ $out = $db->query($command);
   $percent_val_yes = (count(array_keys($percent_hopper, 1)) / count($percent_hopper)) * 100;
   array_push($percent, $percent_val_no);
   array_push($percent, $percent_val_yes);
-  array_push($percent, $dir_contents);
+  array_push($percent, $next_img);
 
 
 
