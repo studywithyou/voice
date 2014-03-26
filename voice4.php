@@ -13,7 +13,7 @@
       var user_id = "<?php echo ltrim($_SERVER['REMOTE_ADDR'], "::");?>";
       var vote_val = vote;
 
-      var img_pattern = /\.\/img\/(.*?\.(?:jpg|jpeg|gif|png|bmp))$/i; //checks to make sure only files with "valid" extensions are accepted1dd
+      var img_pattern = /\.\/gallery\/(.*?\.(?:jpg|jpeg|gif|png|bmp))$/i; //checks to make sure only files with "valid" extensions are accepted1dd
       var img_path = document.getElementById("image_display").getAttribute("src");
       var img_url = img_path.match(img_pattern);
 
@@ -96,7 +96,7 @@
     <button class = "redbox_left">
       <img src="./img/left_arrow2.gif" alt="previous image">
     </button>
-    <img id ="image_display" class= "main_img" src="./img/main_img.jpg" alt="kitten">
+    <img id ="image_display" class= "main_img" src="./gallery/main_img.jpg" alt="kitten">
     <button class = "redbox_right">
       <img src="./img/right_arrow2.gif" alt="next image">
     </button>

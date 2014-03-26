@@ -7,7 +7,7 @@
 
 
 // TODO: Set up PHP to get the images in the dir and load them into an array so that the next img_url can be inserted into the JSON object and sent back to the JS where it will replace the current image.
-  $dir_contents = scandir("./img/", 1);
+  $dir_contents = scandir("./gallery/", 1);
 
 
 
