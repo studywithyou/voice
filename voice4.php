@@ -60,12 +60,12 @@
       xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
           var vote_response = xmlhttp.responseText;
-          alert(vote_response);
+         // alert(vote_response);
           if (!(vote_response)) {
             alert("no response");
           }
           var vote_decode = JSON.parse(vote_response);
-          alert(vote_response);
+         // alert(vote_response);
 
           var vote_no = vote_decode[0];
           var vote_yes = vote_decode[1];
@@ -77,8 +77,25 @@
           // This method of cleaning up the numbers can lead to gobbledy gook 1e+%22 type errors
           // if the database isn't seeded with enough data to produce a situation where
           // the function generating the percent would divide by zero.
-          document.getElementById("d_vote").innerHTML = parseInt(vote_no).toPrecision(2) +"%";
-          document.getElementById("u_vote").innerHTML = parseInt(vote_yes).toPrecision(2)+"%";
+          if (parseInt(vote_no) == 100) {
+            document.getElementById("d_vote").innerHTML = parseInt(vote_no).toPrecision(3) +"%";
+          }
+
+          else if (vote_no == 0) {
+            document.getElementById("d_vote").innerHTML = parseInt(vote_no).toPrecision(1) +"%";
+          }
+          else {
+            document.getElementById("d_vote").innerHTML = parseInt(vote_no).toPrecision(2) +"%";
+          }
+          if (parseInt(vote_yes) == 100) {
+            document.getElementById("u_vote").innerHTML = parseInt(vote_yes).toPrecision(3) +"%";
+          }
+          else if(vote_yes == 0) {
+            document.getElementById("u_vote").innerHTML = parseInt(vote_yes).toPrecision(1) +"%";
+          }
+          else {
+            document.getElementById("u_vote").innerHTML = parseInt(vote_yes).toPrecision(2) +"%";
+          }
           document.getElementById("test").innerHTML = vote_decode[3];
         }
       }

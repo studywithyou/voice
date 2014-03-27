@@ -15,19 +15,21 @@
 // To get the next image to display, text the next index in the array containing the
 // images and see if it is a valid index and if the file there is a real file or
 // the directory "dots." If there is no next image, start over at 0.
-//TODO try loading them into an array and manage the array separately.
-
-array_pop($dir_contents);
-array_pop($dir_contents);
-
- if ($current_index +1 < count($dir_contents)) {
 
 
-    $next_img = $dir_contents[$current_index +1];
+// Popping the array twice gets rid of the "." and ".." items.
+// TODO replace these pops with an array slice.
+$dir_filt = array_slice($dir_contents, 0, -3);
+//array_pop($dir_contents);
+
+ if ($current_index +1 < count($dir_filt)) {
+
+
+    $next_img = $dir_filt[$current_index +1];
   }
 
   else {
-    $next_img = $dir_contents[0];
+    $next_img = $dir_filt[0];
   }
 
 
@@ -51,10 +53,7 @@ array_pop($dir_contents);
 }
 */
 
-  /*
-   * Temporarily disabled so I can test output without adding a bunch of entries
-   * to the db.
-   */
+
   $db->query("INSERT INTO votes ( vote, user_id, img_url) values(".$voteObj['vote'] .  ",'".$voteObj['user_id']."','" . $voteObj['img_url'] ."')");
 
   $command = "SELECT vote FROM votes WHERE img_url='" . $voteObj['img_url'] ."';";
@@ -73,7 +72,7 @@ $out = $db->query($command);
   array_push($percent, $percent_val_no);
   array_push($percent, $percent_val_yes);
   array_push($percent, $next_img);
-  //array_push($percent, var_dump($dir_contents));
+
 
 
 
