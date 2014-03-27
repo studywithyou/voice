@@ -60,19 +60,26 @@
       xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
           var vote_response = xmlhttp.responseText;
+          alert(vote_response);
           if (!(vote_response)) {
             alert("no response");
           }
+          var vote_decode = JSON.parse(vote_response);
+          alert(vote_response);
 
-          var vote_no = JSON.parse(vote_response)[0];
-          var vote_yes = JSON.parse(vote_response)[1];
+          var vote_no = vote_decode[0];
+          var vote_yes = vote_decode[1];
+          var next_img = vote_decode[2];
+          var next_img_path = "./gallery/" + next_img;
+          var display = document.getElementById("image_display");
+          display.setAttribute("src", next_img_path);
 
           // This method of cleaning up the numbers can lead to gobbledy gook 1e+%22 type errors
           // if the database isn't seeded with enough data to produce a situation where
           // the function generating the percent would divide by zero.
           document.getElementById("d_vote").innerHTML = parseInt(vote_no).toPrecision(2) +"%";
           document.getElementById("u_vote").innerHTML = parseInt(vote_yes).toPrecision(2)+"%";
-          document.getElementById("test").innerHTML = JSON.parse(vote_response)[2];
+          document.getElementById("test").innerHTML = vote_decode[3];
         }
       }
 

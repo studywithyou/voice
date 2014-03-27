@@ -8,8 +8,31 @@
 
 // TODO: Set up PHP to get the images in the dir and load them into an array so that the next img_url can be inserted into the JSON object and sent back to the JS where it will replace the current image.
   $dir_contents = scandir("./gallery/", 1);
+  $current_index = array_search($voteObj['img_url'], $dir_contents);
+ $current_img = $dir_contents[$current_index];
+//$next_img = "main_img03.jpg";
+
+// To get the next image to display, text the next index in the array containing the
+// images and see if it is a valid index and if the file there is a real file or
+// the directory "dots." If there is no next image, start over at 0.
+//TODO try loading them into an array and manage the array separately.
+
+array_pop($dir_contents);
+array_pop($dir_contents);
+
+ if ($current_index +1 < count($dir_contents)) {
 
 
+    $next_img = $dir_contents[$current_index +1];
+  }
+
+  else {
+    $next_img = $dir_contents[0];
+  }
+
+
+
+//$next_img = var_dump($dir_contents);
 
   //Connects to the database and then runs the commands. First to check to make
   // sure that a user has not already voted on an image, then to insert a vote
@@ -49,7 +72,8 @@ $out = $db->query($command);
   $percent_val_yes = (count(array_keys($percent_hopper, 1)) / count($percent_hopper)) * 100;
   array_push($percent, $percent_val_no);
   array_push($percent, $percent_val_yes);
-  array_push($percent, $dir_contents);
+  array_push($percent, $next_img);
+  //array_push($percent, var_dump($dir_contents));
 
 
 
