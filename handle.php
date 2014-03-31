@@ -4,8 +4,9 @@ include("class.db.php");
 
  function go(){
   $new = new Db;
-  $new::ping();
+  $new->set_vote(0, "33", "min01.jpg");
+
+ return $new;
 }
 
 go();
-  ?>
