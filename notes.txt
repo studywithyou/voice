@@ -1,0 +1,14 @@
+/*
+* NOTES
+*/
+
+
+Tasks
+
+- render page
+- display image
+    get next image
+- display votes
+- log vote info
+    check to see if that user has voted on that image before
+    insert vote info into db
