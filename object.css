@@ -1,3 +1,39 @@
-div {
+div.display {
+  border: 1px solid darkorchid;
+  position: absolute;
+  width: 100%;
+}
+
+
+div.display#image {
+  border: 1px solid green;
+  position: relative;
+  width: 80.5%;
+  float: right;
+
+
+
+ /* border: 1px solid green;
+  position: absolute;
+  width: 80%;
+  height: auto;
+  margin-left: 10%;
+  float: right;
+  clear: both;*/
+}
+
+div.display#container{
   border: 1px solid red;
+  width: 19%;
+  height: 99%;
+
+
+  /* border: 1px solid red;
+   *//*position: absolute;*//*
+   width: 19%;
+   float: left;
+   clear: both;
+   margin: 0 0 0 0;
+  height: auto;*/
+
 }

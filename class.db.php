@@ -1,5 +1,5 @@
 <?php
-include_once './class.vote.php';
+require_once './class.vote.php';
 
 class Db {
   public $host;
