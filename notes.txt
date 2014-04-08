@@ -12,3 +12,24 @@ Tasks
 - log vote info
     check to see if that user has voted on that image before
     insert vote info into db
+
+
+
+
+new----
+
+**** View2 ****
+builds the html page
+contains the js script for voting/AJAX
+
+
+
+**** control ****
+handles the getting and setting of the properties that will feed into the View2 object
+handles the db
+
+
+
+**** db ****
+handles the data in and out of the db
+talks to the control

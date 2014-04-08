@@ -1,9 +1,12 @@
 <?php
 include_once "./class.db.php";
 include_once "./class.vote.php";
+include_once "./class.view2.php";
 date_default_timezone_set('America/New_York');
+$user_id  = ltrim($_SERVER['REMOTE_ADDR'], "::");
 
-class Handle {
+
+class Control {
   public $img_url;
   public $user_id;
 

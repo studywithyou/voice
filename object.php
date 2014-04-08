@@ -53,7 +53,7 @@
     <body>
       <div>
         Goo
-        <form method="POST" action="./handle.php">
+        <form method="POST" action="control.php">
         <button onclick="vote()">H</button>
         </form>
       </div>
