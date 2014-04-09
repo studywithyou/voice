@@ -25,11 +25,11 @@ class Db {
     $connect = $this->connect;
 
 
-    $command = "INSERT INTO data (vote, user_id, img_url) VALUES (" . $vote . ", '" . $user_id . "', '" . $img_url ."');";
+    $command = "INSERT INTO data (vote, user_id, img_url) VALUES (". $vote . ", '" . $user_id . "', '" . $img_url ."');";
 
     $connect->query($command);
 
-    return $connect;
+
 
   }
 

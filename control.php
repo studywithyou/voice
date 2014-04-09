@@ -11,24 +11,33 @@ class Control {
   public $user_id;
 
 
-/* function go(){
-  $new = new Db;
-  $new->set_vote(0, "33", "min01.jpg");
+  public function vote_yes($db_conn){
+    $command = "INSERT INTO data (vote, user_id, img_url) VALUES (" . $this->vote_value . ", '" . $this->user_id . "', " . $this->img_url . "');";
+    $db_conn->query($command);
 
- return $new;
-}*/
+  }
 
-public function __construct($img_url, $user_id) {
-  $this->vote_value = 1;
-  $this->user_id = $user_id;
-  $this->img_url = $img_url;
+public function __construct() {
+  if(isset($_POST['data'])){
+    $voteObj = json_decode($_POST['data']);
+    echo $voteObj->img_url;
+  }
+
+  else {
+    $voteObj = "Gg";
+    echo $voteObj;
+  }
+
+
+  $this->vote_value = $this->voteObj[0];
+  $this->user_id == ltrim($_SERVER['REMOTE_ADDR'], "::");
+  $this->img_url =  $this->voteObj[1];
   $db_conn = new Db;
-  return $db_conn;
+  $db_conn->set_vote($this->vote_value, $this->user_id, $this->img_url);
+
+
 
 }
 
-public function vote_yes($db_conn){
-  $command = "INSERT INTO data (vote, user_id, img_url) VALUES (" . $this->vote_value . ", '" . $this->user_id . "', " . $this->img_url . "');";
-  $db_conn->query($command);
-}
+
 }
