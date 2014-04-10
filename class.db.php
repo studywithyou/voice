@@ -1,5 +1,7 @@
 <?php
 require_once './class.vote.php';
+require_once './class.view2.php';
+require_once './control2.php';
 
 class Db {
   public $host;

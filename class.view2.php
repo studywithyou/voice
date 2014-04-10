@@ -1,6 +1,7 @@
 <?php
 include_once './control.php';
 include_once './class.db.php';
+include_once './class.view2.php';
 
 class View2 {
   public $header;
@@ -10,12 +11,12 @@ class View2 {
 
   public $body_upper;
   public $body_lower;
-  public $main_img = "main01.jpg";
+  public $main_img ;
 
   public function __construct($main_img){
 
     //$data = $_POST['data'];
-    if (isset($_POST[''])) {
+    if (isset($_POST['data'])) {
       if ($_POST['img_url']) {
         $this->main_img = $_POST['img_url'];
       }
